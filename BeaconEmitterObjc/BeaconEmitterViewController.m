@@ -18,6 +18,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (nonatomic) CBPeripheralManager *peripheralManager;
 @property (nonatomic) NSMutableArray *messages;
+@property (nonatomic) NSDateFormatter *dateFormatter;
 @end
 
 @implementation BeaconEmitterViewController
@@ -28,6 +29,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
     self.messages = [NSMutableArray array];
+    self.dateFormatter = [[NSDateFormatter alloc] init];
+    self.dateFormatter.dateFormat = @"H:mm:SS";
 }
 
 
@@ -71,13 +74,17 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     cell.textLabel.text = self.messages[indexPath.row];
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
     return cell;
 }
 
 #pragma mark - Private
 
 - (void)logMessage:(NSString *)message {
-    [self.messages addObject:message];
+    NSString *timestamp = [self.dateFormatter stringFromDate:[NSDate date]];
+    NSString *completeMessage = [NSString stringWithFormat:@"%@: %@", timestamp, message];
+    
+    [self.messages addObject:completeMessage];
     [self.tableView reloadData];
 }
 
