@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -15,11 +17,78 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ugF-Qm-Rtl">
+                                <rect key="frame" x="0.0" y="20" width="600" height="280"/>
+                                <connections>
+                                    <segue destination="Edb-bG-JJY" kind="embed" id="5Rz-Ho-w2A"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ugF-Qm-Rtl" secondAttribute="bottom" id="Va5-2Q-cIO"/>
+                            <constraint firstItem="ugF-Qm-Rtl" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="kNW-gb-Te8"/>
+                            <constraint firstItem="ugF-Qm-Rtl" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="w2I-8y-LVa"/>
+                            <constraint firstAttribute="trailing" secondItem="ugF-Qm-Rtl" secondAttribute="trailing" id="w9T-KU-IU7"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="13" y="16"/>
+        </scene>
+        <!--Beacon Emitter View Controller-->
+        <scene sceneID="cqc-qK-laH">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Edb-bG-JJY" customClass="BeaconEmitterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3kS-so-7Jo"/>
+                        <viewControllerLayoutGuide type="bottom" id="tNg-fj-Ww1"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="m4W-1d-7G6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="280"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeaconEmitterViewController" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUc-to-k5G">
+                                <rect key="frame" x="188" y="8" width="225" height="24"/>
+                                <color key="backgroundColor" red="1" green="0.96882035664768551" blue="0.87645371466641109" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="wvA-ZT-nR4"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="an2-0d-3fo">
+                                <rect key="frame" x="0.0" y="40" width="600" height="240"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Edb-bG-JJY" id="ays-92-Y44"/>
+                                    <outlet property="delegate" destination="Edb-bG-JJY" id="GjF-xm-jxw"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="an2-0d-3fo" secondAttribute="trailing" id="VnY-Z5-s09"/>
+                            <constraint firstItem="an2-0d-3fo" firstAttribute="top" secondItem="eUc-to-k5G" secondAttribute="bottom" constant="8" id="fRZ-EP-r1b"/>
+                            <constraint firstAttribute="centerX" secondItem="eUc-to-k5G" secondAttribute="centerX" id="gAY-Bx-Hmc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="an2-0d-3fo" secondAttribute="trailing" constant="-16" id="hgY-XT-C5H"/>
+                            <constraint firstItem="tNg-fj-Ww1" firstAttribute="top" secondItem="an2-0d-3fo" secondAttribute="bottom" id="pjg-Bk-UCR"/>
+                            <constraint firstItem="an2-0d-3fo" firstAttribute="leading" secondItem="m4W-1d-7G6" secondAttribute="leading" id="sWs-3V-HMz"/>
+                            <constraint firstItem="eUc-to-k5G" firstAttribute="top" secondItem="3kS-so-7Jo" secondAttribute="bottom" constant="8" id="siT-6X-nFQ"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <connections>
+                        <outlet property="tableView" destination="an2-0d-3fo" id="yun-KU-jZK"/>
+                        <outlet property="titleLabel" destination="eUc-to-k5G" id="ZXG-0D-UDx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kek-hH-bPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="693" y="-124"/>
         </scene>
     </scenes>
 </document>
