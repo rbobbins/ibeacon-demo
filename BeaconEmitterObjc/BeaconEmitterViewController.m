@@ -20,6 +20,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (nonatomic) NSMutableArray *messages;
 @property (nonatomic) NSDateFormatter *dateFormatter;
 - (IBAction)didTapStartButton:(id)sender;
+- (IBAction)didTapStopButton:(id)sender;
+
 
 @end
 
@@ -93,16 +95,35 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 #pragma mark - Actions
 
 - (IBAction)didTapStartButton:(id)sender {
-    [self logMessage:@"User tapped start button"];
     
-    if (self.peripheralManager.state == CBPeripheralManagerStatePoweredOn) {
+    if (!self.peripheralManager.isAdvertising) {
         NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"62d8c7b8-d78b-4cbf-a800-d2183d960808"];
         CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"only identifier"];
-        
         NSDictionary *advertisingData = [region peripheralDataWithMeasuredPower:nil];
         [self.peripheralManager startAdvertising:advertisingData];
-        [self logMessage:@"Began advertising as iBeacon"];
+        [self logMessage:@"User tapped START button: started advertising as iBeacon"];
+        
+        for (NSString *key in advertisingData.allKeys) {
+            NSString *logData = [NSString stringWithFormat:@"-- %@ = %@", key, advertisingData[key]];
+            [self logMessage:logData];
+        }
+        
+    } else {
+        [self logMessage:@"User tapped START button: already advertising; tap ignored"];
     }
+    
+}
+
+- (IBAction)didTapStopButton:(id)sender {
+    NSMutableString *message = [@"User tapped STOP button: " mutableCopy];
+    
+    if (self.peripheralManager.isAdvertising) {
+        [self.peripheralManager stopAdvertising];
+        [message appendString:@"stopped advertising"];
+    } else {
+        [message appendString:@"not currently advertising; tap ignored"];
+    }
+    [self logMessage:message];
 }
 
 
