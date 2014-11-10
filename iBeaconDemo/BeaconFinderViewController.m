@@ -20,10 +20,12 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (nonatomic) NSMutableArray *messages;
 @property (nonatomic) NSDateFormatter *dateFormatter;
 @property (nonatomic) CLLocationManager *locationManager;
+@property (nonatomic, assign) BOOL *enableAutoscroll;
 
 - (IBAction)didTapStartButton:(id)sender;
 - (IBAction)didTapStopButton:(id)sender;
 - (IBAction)didTapClearButton:(id)sender;
+- (IBAction)didToggleAutoscroll:(id)sender;
 
 @end
 
@@ -36,6 +38,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         self.dateFormatter = [[NSDateFormatter alloc] init];
         self.locationManager = [[CLLocationManager alloc] init];
         self.dateFormatter.dateFormat = @"H:mm:SS";
+        self.enableAutoscroll = YES;
     }
     return self;
 }
@@ -60,15 +63,6 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 }
 
 #pragma mark - CLLocationManagerDelegate
-
-
-- (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager {
-    //required
-}
-
-- (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager {
-    //required
-}
 
 - (void)locationManager:(CLLocationManager *)manager
       didDetermineState:(CLRegionState)state
@@ -122,6 +116,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     [self.locationManager startRangingBeaconsInRegion:(CLBeaconRegion *)region];
     [self logMessage:message];
 }
+
 
 - (void)locationManager:(CLLocationManager *)manager monitoringDidFailForRegion:(CLRegion *)region withError:(NSError *)error {
     NSString *message = [NSString stringWithFormat:@"Monitoring failed with error: %@", error];
@@ -178,6 +173,8 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
 
 - (IBAction)didTapStopButton:(id)sender {
     [self logMessage:@"Tapped stop button"];
+    [self.locationManager stopMonitoringForRegion:[CLBeaconRegion exampleRegion]];
+    [self.locationManager stopRangingBeaconsInRegion:[CLBeaconRegion exampleRegion]];
 }
 
 - (IBAction)didTapClearButton:(id)sender {
@@ -185,6 +182,11 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     self.messages = [NSMutableArray array];
     [self.tableView reloadData];
 }
+
+- (IBAction)didToggleAutoscroll:(id)sender {
+    self.enableAutoscroll = !self.enableAutoscroll;
+}
+
 
 #pragma mark - Private
 
@@ -201,8 +203,10 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     [self.messages addObject:completeMessage];
     [self.tableView reloadData];
     
-    NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:(self.messages.count - 1) inSection:0];
-    [self.tableView scrollToRowAtIndexPath:lastIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    if (self.enableAutoscroll) {
+        NSIndexPath *lastIndexPath = [NSIndexPath indexPathForRow:(self.messages.count - 1) inSection:0];
+        [self.tableView scrollToRowAtIndexPath:lastIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
 }
 
 @end
