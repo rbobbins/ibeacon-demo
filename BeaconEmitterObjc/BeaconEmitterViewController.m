@@ -23,46 +23,64 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 
 @implementation BeaconEmitterViewController
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.messages = [NSMutableArray array];
+        self.dateFormatter = [[NSDateFormatter alloc] init];
+        self.dateFormatter.dateFormat = @"H:mm:SS";
+    }
+    return self;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
     
     self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
-    self.messages = [NSMutableArray array];
-    self.dateFormatter = [[NSDateFormatter alloc] init];
-    self.dateFormatter.dateFormat = @"H:mm:SS";
+    [self logMessage:@"Initialized CBPeripheralManager"];
+
 }
 
 
-#pragma mark - CBPeriphermalManagerDelegate
+#pragma mark - CBPeripheralManagerDelegate
 
 - (void)peripheralManagerDidUpdateState:(CBPeripheralManager *)peripheral {
     NSString *state;
     
     switch (peripheral.state) {
-        case CBPeripheralManagerStatePoweredOn: {
-            NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"62d8c7b8-d78b-4cbf-a800-d2183d960808"];
-            CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"only identifier"];
-            
-            [peripheral startAdvertising:[region peripheralDataWithMeasuredPower:nil]];
+        case CBPeripheralManagerStatePoweredOn:
             state = @"CBPeripheralManagerStatePoweredOn";
             break;
-            
-        }
         case CBPeripheralManagerStateUnauthorized:
             state = @"CBPeripheralManagerStateUnauthorized";
+            break;
         case CBPeripheralManagerStatePoweredOff:
             state = @"CBPeripheralManagerStatePoweredOff";
+            break;
         case CBPeripheralManagerStateResetting:
             state = @"CBPeripheralManagerStateResetting";
+            break;
         case CBPeripheralManagerStateUnknown:
             state = @"CBPeripheralManagerStateUnknown";
+            break;
         case CBPeripheralManagerStateUnsupported:
             state = @"CBPeripheralManagerStateUnsupported";
+            break;
     }
     
     NSString *message = [NSString stringWithFormat:@"Peripheral manager state is %@", state];
     [self logMessage:message];
+    
+    if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
+        NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"62d8c7b8-d78b-4cbf-a800-d2183d960808"];
+        CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"only identifier"];
+        
+        NSDictionary *advertisingData = [region peripheralDataWithMeasuredPower:nil];
+        [peripheral startAdvertising:advertisingData];
+        [self logMessage:@"Began advertising as iBeacon"];
+    }
 }
 
 #pragma mark - UITableViewDataSource
