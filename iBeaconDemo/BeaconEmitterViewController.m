@@ -7,6 +7,7 @@
 //
 
 #import "BeaconEmitterViewController.h"
+#import "CLBeaconRegion+Sample.h"
 #import <CoreBluetooth/CoreBluetooth.h>
 #import <CoreLocation/CoreLocation.h>
 
@@ -99,10 +100,10 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 - (IBAction)didTapStartButton:(id)sender {
     
     if (!self.peripheralManager.isAdvertising) {
-        NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"62d8c7b8-d78b-4cbf-a800-d2183d960808"];
-        CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"only identifier"];
+        CLBeaconRegion *region = [CLBeaconRegion exampleRegion];
         NSDictionary *advertisingData = [region peripheralDataWithMeasuredPower:nil];
         [self.peripheralManager startAdvertising:advertisingData];
+        
         [self logMessage:@"User tapped START button: started advertising as iBeacon"];
         
         for (NSString *key in advertisingData.allKeys) {
