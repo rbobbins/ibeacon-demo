@@ -13,17 +13,20 @@
 
 static NSString * const kCellIdentifier = @"kCellIdentifier";
 
+
 @interface BeaconEmitterViewController () <CBPeripheralManagerDelegate, UITableViewDataSource, UITableViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (nonatomic) CBPeripheralManager *peripheralManager;
 @property (nonatomic) NSMutableArray *messages;
 @property (nonatomic) NSDateFormatter *dateFormatter;
+
 - (IBAction)didTapStartButton:(id)sender;
 - (IBAction)didTapStopButton:(id)sender;
-
+- (IBAction)didTapClearButton:(id)sender;
 
 @end
+
 
 @implementation BeaconEmitterViewController
 
@@ -36,15 +39,14 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     }
     return self;
 }
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
     
     self.peripheralManager = [[CBPeripheralManager alloc] initWithDelegate:self queue:nil];
     [self logMessage:@"Initialized CBPeripheralManager"];
-
 }
 
 
@@ -124,6 +126,11 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
         [message appendString:@"not currently advertising; tap ignored"];
     }
     [self logMessage:message];
+}
+
+- (IBAction)didTapClearButton:(id)sender {
+    self.messages = [NSMutableArray array];
+    [self.tableView reloadData];
 }
 
 

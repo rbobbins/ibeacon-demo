@@ -15,6 +15,7 @@
 		5AB9F4981A10498300DFD457 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AB9F4961A10498300DFD457 /* LaunchScreen.xib */; };
 		5AB9F4A41A10498300DFD457 /* BeaconEmitterObjcTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB9F4A31A10498300DFD457 /* BeaconEmitterObjcTests.m */; };
 		5AB9F4AE1A10498E00DFD457 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AB9F4AD1A10498E00DFD457 /* CoreBluetooth.framework */; };
+		5AB9F4B11A105E5B00DFD457 /* BeaconFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB9F4B01A105E5B00DFD457 /* BeaconFinderViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,8 @@
 		5AB9F4A21A10498300DFD457 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5AB9F4A31A10498300DFD457 /* BeaconEmitterObjcTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BeaconEmitterObjcTests.m; sourceTree = "<group>"; };
 		5AB9F4AD1A10498E00DFD457 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		5AB9F4AF1A105E5B00DFD457 /* BeaconFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BeaconFinderViewController.h; sourceTree = "<group>"; };
+		5AB9F4B01A105E5B00DFD457 /* BeaconFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BeaconFinderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,9 +92,11 @@
 				5AB9F48C1A10498300DFD457 /* AppDelegate.m */,
 				5AB9F48E1A10498300DFD457 /* BeaconEmitterViewController.h */,
 				5AB9F48F1A10498300DFD457 /* BeaconEmitterViewController.m */,
-				5AB9F4911A10498300DFD457 /* Main.storyboard */,
+				5AB9F4AF1A105E5B00DFD457 /* BeaconFinderViewController.h */,
+				5AB9F4B01A105E5B00DFD457 /* BeaconFinderViewController.m */,
 				5AB9F4941A10498300DFD457 /* Images.xcassets */,
 				5AB9F4961A10498300DFD457 /* LaunchScreen.xib */,
+				5AB9F4911A10498300DFD457 /* Main.storyboard */,
 				5AB9F4871A10498300DFD457 /* Supporting Files */,
 			);
 			path = BeaconEmitterObjc;
@@ -225,6 +230,7 @@
 			files = (
 				5AB9F4901A10498300DFD457 /* BeaconEmitterViewController.m in Sources */,
 				5AB9F48D1A10498300DFD457 /* AppDelegate.m in Sources */,
+				5AB9F4B11A105E5B00DFD457 /* BeaconFinderViewController.m in Sources */,
 				5AB9F48A1A10498300DFD457 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
