@@ -3,7 +3,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -90,7 +89,7 @@
                             <constraint firstItem="B64-C9-V3g" firstAttribute="leading" secondItem="eUc-to-k5G" secondAttribute="trailing" constant="8" id="bnB-d2-fXb"/>
                             <constraint firstItem="an2-0d-3fo" firstAttribute="top" secondItem="eUc-to-k5G" secondAttribute="bottom" constant="8" id="fRZ-EP-r1b"/>
                             <constraint firstAttribute="centerX" secondItem="eUc-to-k5G" secondAttribute="centerX" id="gAY-Bx-Hmc"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="an2-0d-3fo" secondAttribute="trailing" constant="-16" id="hgY-XT-C5H"/>
+                            <constraint firstAttribute="trailing" secondItem="an2-0d-3fo" secondAttribute="trailing" id="hgY-XT-C5H"/>
                             <constraint firstItem="tNg-fj-Ww1" firstAttribute="top" secondItem="an2-0d-3fo" secondAttribute="bottom" id="pjg-Bk-UCR"/>
                             <constraint firstItem="an2-0d-3fo" firstAttribute="leading" secondItem="m4W-1d-7G6" secondAttribute="leading" id="sWs-3V-HMz"/>
                             <constraint firstItem="eUc-to-k5G" firstAttribute="top" secondItem="3kS-so-7Jo" secondAttribute="bottom" constant="8" id="siT-6X-nFQ"/>
