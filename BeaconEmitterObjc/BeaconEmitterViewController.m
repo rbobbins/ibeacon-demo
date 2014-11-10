@@ -19,6 +19,8 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
 @property (nonatomic) CBPeripheralManager *peripheralManager;
 @property (nonatomic) NSMutableArray *messages;
 @property (nonatomic) NSDateFormatter *dateFormatter;
+- (IBAction)didTapStartButton:(id)sender;
+
 @end
 
 @implementation BeaconEmitterViewController
@@ -72,15 +74,7 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     
     NSString *message = [NSString stringWithFormat:@"Peripheral manager state is %@", state];
     [self logMessage:message];
-    
-    if (peripheral.state == CBPeripheralManagerStatePoweredOn) {
-        NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"62d8c7b8-d78b-4cbf-a800-d2183d960808"];
-        CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"only identifier"];
-        
-        NSDictionary *advertisingData = [region peripheralDataWithMeasuredPower:nil];
-        [peripheral startAdvertising:advertisingData];
-        [self logMessage:@"Began advertising as iBeacon"];
-    }
+
 }
 
 #pragma mark - UITableViewDataSource
@@ -95,6 +89,22 @@ static NSString * const kCellIdentifier = @"kCellIdentifier";
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:16];
     return cell;
 }
+
+#pragma mark - Actions
+
+- (IBAction)didTapStartButton:(id)sender {
+    [self logMessage:@"User tapped start button"];
+    
+    if (self.peripheralManager.state == CBPeripheralManagerStatePoweredOn) {
+        NSUUID *uuid = [[NSUUID alloc] initWithUUIDString:@"62d8c7b8-d78b-4cbf-a800-d2183d960808"];
+        CLBeaconRegion *region = [[CLBeaconRegion alloc] initWithProximityUUID:uuid identifier:@"only identifier"];
+        
+        NSDictionary *advertisingData = [region peripheralDataWithMeasuredPower:nil];
+        [self.peripheralManager startAdvertising:advertisingData];
+        [self logMessage:@"Began advertising as iBeacon"];
+    }
+}
+
 
 #pragma mark - Private
 

@@ -51,8 +51,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BeaconEmitterViewController" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUc-to-k5G">
-                                <rect key="frame" x="188" y="8" width="225" height="24"/>
-                                <color key="backgroundColor" red="1" green="0.96882035664768551" blue="0.87645371466641109" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="8" y="8" width="225" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="wvA-ZT-nR4"/>
                                 </constraints>
@@ -68,10 +67,27 @@
                                     <outlet property="delegate" destination="Edb-bG-JJY" id="GjF-xm-jxw"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B64-C9-V3g">
+                                <rect key="frame" x="241" y="5" width="120" height="30"/>
+                                <color key="backgroundColor" red="0.80000001192092896" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="1Uq-O6-pNZ"/>
+                                </constraints>
+                                <state key="normal" title="Start Advertising">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapStartButton:" destination="Edb-bG-JJY" eventType="touchUpInside" id="xjy-WU-dSh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="eUc-to-k5G" firstAttribute="leading" secondItem="m4W-1d-7G6" secondAttribute="leading" constant="8" id="3bP-jh-dRN"/>
                             <constraint firstAttribute="trailing" secondItem="an2-0d-3fo" secondAttribute="trailing" id="VnY-Z5-s09"/>
+                            <constraint firstItem="eUc-to-k5G" firstAttribute="centerY" secondItem="B64-C9-V3g" secondAttribute="centerY" id="aPz-eg-ojv"/>
+                            <constraint firstItem="B64-C9-V3g" firstAttribute="leading" secondItem="eUc-to-k5G" secondAttribute="trailing" constant="8" id="bnB-d2-fXb"/>
                             <constraint firstItem="an2-0d-3fo" firstAttribute="top" secondItem="eUc-to-k5G" secondAttribute="bottom" constant="8" id="fRZ-EP-r1b"/>
                             <constraint firstAttribute="centerX" secondItem="eUc-to-k5G" secondAttribute="centerX" id="gAY-Bx-Hmc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="an2-0d-3fo" secondAttribute="trailing" constant="-16" id="hgY-XT-C5H"/>
@@ -79,6 +95,11 @@
                             <constraint firstItem="an2-0d-3fo" firstAttribute="leading" secondItem="m4W-1d-7G6" secondAttribute="leading" id="sWs-3V-HMz"/>
                             <constraint firstItem="eUc-to-k5G" firstAttribute="top" secondItem="3kS-so-7Jo" secondAttribute="bottom" constant="8" id="siT-6X-nFQ"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gAY-Bx-Hmc"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <connections>
