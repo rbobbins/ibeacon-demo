@@ -144,8 +144,10 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
             break;
         case CLProximityFar:
             proximityString = @"FAR";
+            break;
         case CLProximityUnknown:
             proximityString = @"UNKNOWN";
+            break;
     }
     
    
