@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A1E11A11A11DACD00674070 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A1E11A01A11DACD00674070 /* MenuViewController.m */; };
 		5A8059A11A10755000CA17AB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8059A01A10755000CA17AB /* CoreLocation.framework */; };
 		5A8059A41A10789A00CA17AB /* CLBeaconRegion+Sample.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8059A31A10789A00CA17AB /* CLBeaconRegion+Sample.m */; };
 		5AB9F48A1A10498300DFD457 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB9F4891A10498300DFD457 /* main.m */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5A1E119F1A11DACD00674070 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		5A1E11A01A11DACD00674070 /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
 		5A8059A01A10755000CA17AB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		5A8059A21A10789A00CA17AB /* CLBeaconRegion+Sample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CLBeaconRegion+Sample.h"; sourceTree = "<group>"; };
 		5A8059A31A10789A00CA17AB /* CLBeaconRegion+Sample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CLBeaconRegion+Sample.m"; sourceTree = "<group>"; };
@@ -84,6 +87,8 @@
 				5AB9F4961A10498300DFD457 /* LaunchScreen.xib */,
 				5AB9F4911A10498300DFD457 /* Main.storyboard */,
 				5AB9F4871A10498300DFD457 /* Supporting Files */,
+				5A1E119F1A11DACD00674070 /* MenuViewController.h */,
+				5A1E11A01A11DACD00674070 /* MenuViewController.m */,
 			);
 			path = iBeaconDemo;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AB9F4901A10498300DFD457 /* BeaconEmitterViewController.m in Sources */,
+				5A1E11A11A11DACD00674070 /* MenuViewController.m in Sources */,
 				5AB9F48D1A10498300DFD457 /* AppDelegate.m in Sources */,
 				5A8059A41A10789A00CA17AB /* CLBeaconRegion+Sample.m in Sources */,
 				5AB9F4B11A105E5B00DFD457 /* BeaconFinderViewController.m in Sources */,
@@ -281,6 +287,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/iBeaconDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = iBeaconDemo;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -292,6 +299,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/iBeaconDemo/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = iBeaconDemo;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
