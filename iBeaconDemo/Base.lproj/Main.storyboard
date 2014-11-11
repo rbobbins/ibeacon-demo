@@ -78,10 +78,9 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B64-C9-V3g">
-                                <rect key="frame" x="20" y="8" width="120" height="44"/>
+                                <rect key="frame" x="20" y="8" width="181" height="44"/>
                                 <color key="backgroundColor" red="0.80000001192092896" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="1Uq-O6-pNZ"/>
                                     <constraint firstAttribute="height" constant="44" id="VDe-Zh-x0R"/>
                                 </constraints>
                                 <state key="normal" title="Start Advertising">
@@ -93,11 +92,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sdZ-gP-ULT">
-                                <rect key="frame" x="148" y="8" width="120" height="44"/>
+                                <rect key="frame" x="209" y="8" width="182" height="44"/>
                                 <color key="backgroundColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="T2Y-1Z-fpv"/>
-                                </constraints>
                                 <state key="normal" title="Stop Advertising">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -107,11 +103,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtg-2K-mQl">
-                                <rect key="frame" x="276" y="7" width="44" height="44"/>
+                                <rect key="frame" x="399" y="7" width="181" height="44"/>
                                 <color key="backgroundColor" red="1" green="1" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="POF-9X-Kbb"/>
-                                    <constraint firstAttribute="width" constant="44" id="WBE-QX-2GT"/>
                                 </constraints>
                                 <state key="normal" title="Clear">
                                     <color key="titleColor" red="0.20000000298023224" green="0.20000000298023224" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
@@ -133,9 +128,12 @@
                             <constraint firstItem="Xtg-2K-mQl" firstAttribute="height" secondItem="sdZ-gP-ULT" secondAttribute="height" id="Ruz-Ou-jCR"/>
                             <constraint firstAttribute="trailing" secondItem="an2-0d-3fo" secondAttribute="trailing" id="VnY-Z5-s09"/>
                             <constraint firstItem="B64-C9-V3g" firstAttribute="height" secondItem="sdZ-gP-ULT" secondAttribute="height" id="Wuo-jT-Omq"/>
+                            <constraint firstItem="sdZ-gP-ULT" firstAttribute="width" secondItem="B64-C9-V3g" secondAttribute="width" id="XSc-QE-Xa0"/>
                             <constraint firstItem="B64-C9-V3g" firstAttribute="leading" secondItem="m4W-1d-7G6" secondAttribute="leading" constant="20" symbolic="YES" id="Zqe-pw-YzZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Xtg-2K-mQl" secondAttribute="trailing" constant="20" symbolic="YES" id="ayQ-lU-NsT"/>
                             <constraint firstItem="B64-C9-V3g" firstAttribute="top" secondItem="3kS-so-7Jo" secondAttribute="bottom" constant="8" symbolic="YES" id="c7P-ix-gFh"/>
                             <constraint firstAttribute="trailing" secondItem="an2-0d-3fo" secondAttribute="trailing" id="hgY-XT-C5H"/>
+                            <constraint firstItem="B64-C9-V3g" firstAttribute="width" secondItem="Xtg-2K-mQl" secondAttribute="width" id="jvt-2C-Px6"/>
                             <constraint firstItem="Xtg-2K-mQl" firstAttribute="leading" secondItem="sdZ-gP-ULT" secondAttribute="trailing" constant="8" symbolic="YES" id="nU9-GF-sr3"/>
                             <constraint firstItem="an2-0d-3fo" firstAttribute="top" secondItem="B64-C9-V3g" secondAttribute="bottom" constant="8" id="oaW-uf-uWZ"/>
                             <constraint firstItem="tNg-fj-Ww1" firstAttribute="top" secondItem="an2-0d-3fo" secondAttribute="bottom" id="pjg-Bk-UCR"/>
